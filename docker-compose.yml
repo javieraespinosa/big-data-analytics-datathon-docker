@@ -1,0 +1,15 @@
+
+version: '3'
+services:
+
+   jupyter:
+      build:    .
+      image:    jaeo/datathon-webarchives
+      environment:
+         SPARK_PUBLIC_DNS: localhost
+         PYSPARK_DRIVER_PYTHON: start-notebook.sh
+      ports:
+         - 8888:8888  # Jupyter 
+         - 4040:4040  # SparkContext default webUI
+      volumes:
+         - ./:/notebook_dir
